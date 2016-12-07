@@ -43,4 +43,21 @@ function makeList(array) {
   return list
 }
 
+function sortList(items, key) {
+  const sorted = items.sort(function(a, b) {
+    let A = a[key].toString().toUpperCase();
+    let B = b[key].toString().toUpperCase();
+
+    if (A < B) {
+      return -1;
+    }
+    if (nameA > nameB) {
+      return 1;
+    }
+    return 0;
+  });
+
+  return sorted
+}
+
 module.exports = ObjectSorter;

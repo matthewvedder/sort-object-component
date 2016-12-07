@@ -3,11 +3,11 @@ const ReactRouter = require('react-router');
 const Router = ReactRouter.Router;
 const Route = ReactRouter.Route;
 const hashHistory = ReactRouter.hashHistory;
-const Main = require('../components/Main');
+const ObjectSorter = require('../components/ObjectSorter');
 
 const routes = (
   <Router history={hashHistory}>
-    <Route path="/" component={Main} />
+    <Route path="/" component={ObjectSorter} />
   </Router>
 );
 

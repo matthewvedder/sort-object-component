@@ -1,9 +1,10 @@
 const React = require('react');
+const Button = require('./Button');
 
 const ObjectSorter = React.createClass({
   getInitialState() {
   return {
-    stars: [
+    array: [
       { Name: 'ST-78', Distance: 89.4, Color: '#899C46' },
       { Name: 'SF-32', Distance: 61.5, Color: '#CC9026' },
       { Name: 'SG-22', Distance: 52.3, Color: '#8B9044' },
@@ -17,18 +18,26 @@ const ObjectSorter = React.createClass({
   }
 },
 
+handleClick: function(e) {
+  var value = e.target.getAttribute('data-value');
+  this.setState({ array: sortList(this.state.array, value) });
+},
+
   render() {
     return (
       <div>
-        <div>{ makeList(this.state.stars) }</div>
-        <Button onClick={this.handleClick} label="C" value="clear" />
-        <Button onClick={this.handleClick} label="7" value="7" />
-        <Button onClick={this.handleClick} label="4" value="4" />
+        <div>
+          { makeList(this.state.array) }
+        </div>
+        <Button onClick={this.handleClick} label="Name" value="Name" />
+        <Button onClick={this.handleClick} label="Distance" value="Distance" />
+        <Button onClick={this.handleClick} label="Color" value="Color" />
       </div>
 
     );
   }
 });
+
 
 function makeList(array) {
   const list = array.map((item) => {
@@ -51,7 +60,7 @@ function sortList(items, key) {
     if (A < B) {
       return -1;
     }
-    if (nameA > nameB) {
+    if (A > B) {
       return 1;
     }
     return 0;
